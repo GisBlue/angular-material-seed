@@ -1,0 +1,3 @@
+Generate token.
+
+https://github.com/WebsiteDeveloper/GitHubAccess/wiki/Generating-API-token
