@@ -22,7 +22,7 @@ module.exports = function(grunt) {
                     },
                     {
                         expand: true,
-                        src: ['css/**', 'lib/**', 'pages/**'],
+                        src: ['css/**', 'lib/**', 'pages/**', 'vendor/**'],
                         dest: 'build'
                     }
                 ]
