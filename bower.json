@@ -1,9 +1,0 @@
-{
-    "name": "angular-material-seed",
-    "dependencies": {
-        "angularjs": ">=1.4.5",
-        "jquery": ">=2.1.1",
-        "materialize": "https://github.com/Dogfalo/materialize.git",
-        "angular-currency-filter": "https://github.com/cherryApp/angular-currency-filter.git"
-    }
-}
