@@ -1,0 +1,37 @@
+@echo off
+
+::File paths
+SET node32="https://nodejs.org/dist/latest/node-v4.0.0-x86.msi"
+SET node64="https://nodejs.org/dist/latest/node-v4.0.0-x64.msi"
+SET brackets="http://wordpressfejlesztes.hu/itfactory/brackets.msi"
+SET git32="http://wordpressfejlesztes.hu/itfactory/git32.7z.exe"
+SET git64="http://wordpressfejlesztes.hu/itfactory/git64.7z.exe"
+
+::CheckOS
+IF EXIST "%PROGRAMFILES(X86)%" (SET myos=64) ELSE (SET myos=32)
+
+::get download directory
+set /p dpath="Add meg a letoltesi mappat a telepiteshez: "
+
+::create dir if not exists
+IF NOT EXIST "%dpath%" (mkdir %dpath% )
+
+::download nodejs
+IF %myos% EQU 64 (SET cpath=%node64%) ELSE (SET cpath=%node32%)
+bitsadmin.exe /transfer "SetupNodejs" %cpath% %dpath%\node.msi
+
+::install nodejs
+%dpath%\node.msi
+
+::download brackets
+bitsadmin.exe /transfer "SetupBrackets" %brackets% %dpath%\brackets.msi
+
+::install brackets
+%dpath%\brackets.msi
+
+::download git
+IF %myos% EQU 64 (SET cpath=%git64%) ELSE (SET cpath=%git32%)
+bitsadmin.exe /transfer "SetupGIT" %cpath% %dpath%\git.7z.exe
+%dpath%\git.7z.exe
+
+set /p DUMMY=KESZ. Nyomj ENTER-t a kilepeshez...
