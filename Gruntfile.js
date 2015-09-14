@@ -9,15 +9,38 @@ module.exports = function( grunt ) {
             },
             build: {
                 src: ['js/*.js'],
-                dest: 'js/<%= pkg.name %>.min.js'
+                dest: 'build/js/<%= pkg.name %>.min.js'
             }
-        }        
+        },
+        copy: {
+            main: {
+                files: [
+                    {
+                        expand: true,
+                        src: ['index.html'],
+                        dest: 'build'
+                    },
+                    {
+                        expand: true,
+                        src: ['vendor/**', 'pages/**', 'css/**'],
+                        dest: 'build'
+                    }
+                ]
+            }
+        },
+        watch: {
+            files: ['css/**', 'js/**', 'pages/**'],
+            tasks: ['fast']
+        }
         
     } );
     
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+    grunt.loadNpmTasks( 'grunt-contrib-copy' );
+    grunt.loadNpmTasks( 'grunt-contrib-watch' );
     
-    grunt.registerTask( 'default', ['uglify'] );
+    grunt.registerTask( 'fast', ['uglify', 'copy'] );
+    grunt.registerTask( 'default', ['watch'] );
     
     
 }

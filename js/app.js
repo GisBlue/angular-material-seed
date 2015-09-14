@@ -1,2 +1,5 @@
 // Initialize application.
-angular.module( "ShopApp", [] );
+angular.module( "ShopApp", [] )
+    .controller( 'loginCtrl', function() {
+    
+} ); 
