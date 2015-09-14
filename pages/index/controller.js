@@ -1,1 +1,3 @@
-
+var indexController = angular.controller( 'indexCtrl', [ '$scope', function ($scope) {
+	// My full featured code...
+} ] );
